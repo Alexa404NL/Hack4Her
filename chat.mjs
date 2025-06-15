@@ -2,7 +2,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Coloca tu API Key aquí entre comillas
-const ai = new GoogleGenerativeAI("AIzaSyB4U0GDb9yX8EsZn3JOn8a5v7I0Y4qrnjU");
+const ai = new GoogleGenerativeAI(API_KEY);
 
 // Función principal
 async function main() {
