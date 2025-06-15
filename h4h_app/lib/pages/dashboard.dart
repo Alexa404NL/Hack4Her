@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:h4h_app/components/itemscroll.dart';
+import 'package:h4h_app/components/shoplist.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Dashboard extends StatefulWidget {
@@ -21,11 +23,13 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("lol")),
+      backgroundColor: Colors.grey[100],
+      appBar: AppBar(
+        title: Text("lol")
+      ),
       body: SingleChildScrollView(
-        child: Container(
-          color: Colors.grey[200],
-          padding: const EdgeInsets.symmetric(vertical: 20),
+        child: Padding(
+          padding: EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
