@@ -1,20 +1,15 @@
-// Importamos la librería oficial de Gemini
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 
-// Coloca tu API Key aquí entre comillas
-const ai = new GoogleGenerativeAI(API_KEY);
+const ai = new GoogleGenAI({ apiKey: API_KEY });
 
-// Función principal
 async function main() {
-  // Activamos el modelo
-  const model = ai.getGenerativeModel({ model: "gemini-1.5-flash" });
-
-  // Enviamos el mensaje
-  const result = await model.generateContent("You are a worm that works very hard like the bees");
-
-  // Mostramos la respuesta en la consola
-  const response = await result.response;
-  console.log(response.text());
+  const response = await ai.models.generateContent({
+    model: "gemini-2.0-flash",
+    contents: "You are a worm that works very hard like the bees",
+  });
+  console.log(response.text);
 }
+
+await main();
 
 
