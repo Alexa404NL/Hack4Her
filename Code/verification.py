@@ -45,7 +45,6 @@ def verify():
     write(path + "verification_answer.mp3", fs, recording)
     print(path + "verification_answer.mp3")
     result = model.transcribe(path + "verification_answer.mp3")
-    print("transcribe ok")
     answer = result["text"].lower()
     answer = re.sub("[^A-Z]", "", answer, 0, re.IGNORECASE) 
     #answer = "yes"  # For testing purposes, replace with actual input

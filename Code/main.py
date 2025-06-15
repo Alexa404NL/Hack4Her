@@ -19,15 +19,15 @@ def login():
     except Exception as e:
         return JSONResponse(status_code=501, content={"error": str(e)})
 
-@app.post("/signup")
-def signup():
-    try:
-        speak("Setting up new user.")
-        user_setup()
-        speak("User setup completed.")
-        return {"status": "success", "message": "User created"}
-    except Exception as e:
-        return JSONResponse(status_code=500, content={"error": str(e)})
+# @app.post("/signup")
+# def signup():
+#     try:
+#         speak("Setting up new user.")
+#         user_setup()
+#         speak("User setup completed.")
+#         return {"status": "success", "message": "User created"}
+#     except Exception as e:
+#         return JSONResponse(status_code=500, content={"error": str(e)})
 
 
 
