@@ -1,38 +1,20 @@
-// Cargar variables de entorno desde .env
-import dotenv from "dotenv";
-dotenv.config();
-
-// Importamos la librería de Gemini
+// Importamos la librería oficial de Gemini
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-// Importamos readline para recibir texto del usuario
-import readline from "readline";
-
-// Creamos la interfaz de consola
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-// Tomamos la API key desde el archivo .env
-const API_KEY = process.env.API_KEY;
-const ai = new GoogleGenerativeAI(API_KEY);
+// Coloca tu API Key aquí entre comillas
+const ai = new GoogleGenerativeAI("AIzaSyB4U0GDb9yX8EsZn3JOn8a5v7I0Y4qrnjU");
 
 // Función principal
 async function main() {
-  rl.question("¿Qué quieres preguntarle a Gemini?\n> ", async (input) => {
-    const model = ai.getGenerativeModel({ model: "gemini-1.5-flash" });
+  // Activamos el modelo
+  const model = ai.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    const result = await model.generateContent(input);
-    const response = await result.response;
+  // Enviamos el mensaje
+  const result = await model.generateContent("You are a worm that works very hard like the bees");
 
-    console.log("\n🧠 Respuesta de Gemini:");
-    console.log(response.text());
-
-    rl.close();
-  });
+  // Mostramos la respuesta en la consola
+  const response = await result.response;
+  console.log(response.text());
 }
-
-main();
 
 
