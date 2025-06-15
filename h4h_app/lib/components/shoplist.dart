@@ -108,7 +108,7 @@ class _ShopTileState extends State<ShopTile> {
                                   topRight: Radius.circular(4.0),
                                   bottomRight: Radius.circular(4.0),
                                 ),
-                                color:Colors.purple
+                                color:Color.fromARGB(255, 109, 46, 177)
                               ),
                               height:40, 
                               width:40, 
@@ -128,7 +128,7 @@ class _ShopTileState extends State<ShopTile> {
               height: 42,
               width: 400,
               decoration: BoxDecoration(
-                color: Colors.purple,
+                color: Color.fromARGB(255, 109, 46, 177),
                 borderRadius: BorderRadius.circular(4.0)
               ),
               child: Text(
