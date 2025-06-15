@@ -5,8 +5,8 @@ Our application combines the familiar aesthetic of the existing [Tuali website](
 - *Voice Recognition Access*: Seamlessly log in and navigate the app using advanced voice recognition technology.
 - *AI Chatbot Integration*: Enhance your shopping journey with our intelligent multilingual chatbot, providing personalized assistance and recommendations.
 - *Familiar User Interface*: Experience a consistent brand feel with a landing page that thoughtfully mimics the design of Tuali.com.
-- *Multi-Language Support*: Our AI model is built to support multiple languages, ensuring a broad and inclusive user base.
-- *Robust Security*: We prioritize your data security through the implementation of strong hashing techniques for user credentials.
+- *Multi-Language Support*: AI model that supports multiple languages, ensuring a broad and inclusive user base.
+- *Robust Security*: We prioritize your data security through the implementation of hashing techniques for user credentials.
 - *MongoDB Database*: Utilizing MongoDB for efficient and secure data management.
 
 ## Future Enhancements
