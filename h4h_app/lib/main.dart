@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:h4h_app/pages/chatbot.dart';
 import 'package:h4h_app/pages/dashboard.dart';
+import 'package:h4h_app/pages/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurpleAccent),
       ),
-      home: const SimpleChat(),
+      home: const LoginPage(),
       debugShowCheckedModeBanner: false,
     );
   }
