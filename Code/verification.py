@@ -16,7 +16,7 @@ path = os.getenv("ANSWERS_PATH")
 model = whisper.load_model("small")
 fs = 44100  # Sample rate
 seconds = 3  # Duration of recording
-load_dotenv("./Code./env")
+load_dotenv("./env")
 config = dotenv_values(".env")
 uri = os.getenv("MONGO_URI")
 client = MongoClient(uri, server_api=ServerApi('1'))
@@ -43,7 +43,9 @@ def verify():
     recording = sd.rec(int(seconds * fs), samplerate=fs, channels=2)
     sd.wait()
     write(path + "verification_answer.mp3", fs, recording)
+    print(path + "verification_answer.mp3")
     result = model.transcribe(path + "verification_answer.mp3")
+    print("transcribe ok")
     answer = result["text"].lower()
     answer = re.sub("[^A-Z]", "", answer, 0, re.IGNORECASE) 
     #answer = "yes"  # For testing purposes, replace with actual input
