@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:h4h_app/pages/chatbot.dart';
 import 'package:h4h_app/pages/dashboard.dart';
 
 void main() {
@@ -29,9 +30,9 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.redAccent),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurpleAccent),
       ),
-      home: const Dashboard(),
+      home: const SimpleChat(),
       debugShowCheckedModeBanner: false,
     );
   }
