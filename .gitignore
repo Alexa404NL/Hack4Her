@@ -1,0 +1,6 @@
+.venv
+Answer
+/node_modules
+/code/__pycache__
+/code/Answers
+/code/.env
