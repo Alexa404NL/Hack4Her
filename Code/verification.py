@@ -49,7 +49,7 @@ def verify():
     #answer = "yes"  # For testing purposes, replace with actual input
     print(answer)   
     if users_collection.count_documents({}) == 0 or answer == "no":
-        speak("There is no existing user in the database. Please create a user first.")
+        speak("Let's set up a new user.")
         user_setup()
         return
     elif answer == "yes" or answer == "Yes":

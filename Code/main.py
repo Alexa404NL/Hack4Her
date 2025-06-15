@@ -7,7 +7,7 @@ state=verify()
 if state:
     speak("Verification successful. Welcome back!")
 else:
-    speak("Verification failed. Please try again or set up a new user.")
+    speak("set up a new user.")
     user_setup()
     speak("User setup completed. You can now try to verify again.")
     verify()

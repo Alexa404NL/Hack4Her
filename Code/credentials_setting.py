@@ -24,7 +24,6 @@ uri = os.getenv("MONGO_URI")
 client = MongoClient(uri, server_api=ServerApi('1'))
 
 
-
 # Enviar un ping para confirmar una conexión exitosa
 try:
     # Connect to MongoDB
