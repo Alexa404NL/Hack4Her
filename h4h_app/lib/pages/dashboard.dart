@@ -26,7 +26,6 @@ class _DashboardState extends State<Dashboard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               itemListView(),
-              const SizedBox(height: 10),
 
               ImageSlider(),
 

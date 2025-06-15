@@ -7,17 +7,17 @@ Widget itemListView() {
       padding: EdgeInsets.fromLTRB(6,0,6,0),
       scrollDirection: Axis.horizontal,
       children: [
-        itemTile("Pedido Fácil"),
-        itemTile("Refrescos"),
-        itemTile("Agua"),
-        itemTile("Bebidas de fruta"),
-        itemTile("Agua mineral")
+        itemTile("Pedido Fácil", "assets/images/pedido.png"),
+        itemTile("Refrescos", "assets/images/refrescos.png"),
+        itemTile("Agua", "assets/images/agua.png"),
+        itemTile("Bebidas de fruta", "assets/images/fruta.png"),
+        itemTile("Agua mineral", "assets/images/mineral.png"),
       ],
     ),
   );
 }
 
-Widget itemTile(String titlet) {
+Widget itemTile(String titlet, String imagePath) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(
@@ -36,9 +36,13 @@ Widget itemTile(String titlet) {
                     color: const Color.fromARGB(255, 58, 58, 58).withValues(alpha: 0.1), // light shadow
                     blurRadius: 5,
                     offset: Offset(0, 3),
-                )],
+                  )
+                ],
               ),
-              child: Center(child: Text("[image]", softWrap: true)),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(imagePath, fit: BoxFit.contain),
+              ),
             ),
             Text(titlet,
               textAlign: TextAlign.center,
