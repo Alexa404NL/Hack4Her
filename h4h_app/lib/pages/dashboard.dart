@@ -23,7 +23,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Color.fromARGB(255, 242, 242, 242),
       appBar: AppBar(
         title: Text("lol")
       ),
@@ -34,13 +34,9 @@ class _DashboardState extends State<Dashboard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Título
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
-                  "This is a page",
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ),
+              
+              itemListView(),
+              
               const SizedBox(height: 20),
 
               // PageView de imágenes
@@ -54,7 +50,7 @@ class _DashboardState extends State<Dashboard> {
                     });
                   },
                   children: [
-                    _buildImage('assets/images/img1.png'),
+                    // _buildImage('assets/images/img1.png'),
                     _buildImage('assets/images/img2.png'),
                     _buildImage('assets/images/img3.png'),
                   ],
@@ -67,17 +63,21 @@ class _DashboardState extends State<Dashboard> {
               Center(
                 child: AnimatedSmoothIndicator(
                   activeIndex: _currentIndex,
-                  count: 3,
+                  count: 2,
                   effect: ExpandingDotsEffect(
                     dotHeight: 10,
                     dotWidth: 10,
                     expansionFactor: 3.5,
-                    activeDotColor: Colors.red,
-                    dotColor: Colors.grey.shade400,
+                    activeDotColor: Color.fromARGB(255, 219, 7, 35),
+                    dotColor: Color.fromARGB(255,215, 213, 209),
                     spacing: 12,
                   ),
                 ),
               ),
+
+              const SizedBox(height: 12),
+              shopList(),
+
             ],
           ),
         ),
