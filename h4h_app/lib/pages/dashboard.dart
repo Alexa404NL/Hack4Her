@@ -4,6 +4,7 @@ import 'package:h4h_app/components/itemscroll.dart';
 import 'package:h4h_app/components/shoplist.dart';
 import 'package:h4h_app/components/pageview.dart'; // este ya lo tienes
 import 'package:h4h_app/components/productsHeader.dart';
+import 'package:h4h_app/components/navigationBar.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -13,6 +14,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +40,14 @@ class _DashboardState extends State<Dashboard> {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: StaticBottomNavigationBar(
+        selectedIndex: _selectedIndex,
+        onItemSelected: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
       ),
     );
   }
