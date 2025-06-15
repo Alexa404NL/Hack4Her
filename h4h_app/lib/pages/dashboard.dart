@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:h4h_app/components/itemscroll.dart';
+import 'package:h4h_app/components/shoplist.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -14,15 +15,13 @@ class  _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: Text("lol")
       ),
-      body: Container(
-        padding: EdgeInsets.all(0.0),
-        decoration: BoxDecoration(
-          color: Colors.grey[200]
-        ),
-        child: Center(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,7 +30,8 @@ class  _DashboardState extends State<Dashboard> {
                   "This is a page",
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
-                itemListView()
+                itemListView(),
+                shopList()
             ],
           ),
         ),
