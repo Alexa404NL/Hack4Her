@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:h4h_app/components/appbar.dart';
 import 'package:h4h_app/components/itemscroll.dart';
 import 'package:h4h_app/components/shoplist.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -24,9 +25,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 242, 242, 242),
-      appBar: AppBar(
-        title: Text("lol")
-      ),
+      appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(16),
