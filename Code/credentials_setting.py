@@ -6,6 +6,9 @@ import re
 import yaml
 import os
 from system_speak import *
+from dotenv import load_dotenv, dotenv_values
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -15,13 +18,35 @@ path = os.getenv("ANSWERS_PATH")
 model = whisper.load_model("small")
 fs = 44100  # Sample rate
 seconds = 3  # Duration of recording
+load_dotenv("./Code./env")
+config = dotenv_values(".env")
+uri = os.getenv("MONGO_URI")
+client = MongoClient(uri, server_api=ServerApi('1'))
+
+
+
+# Enviar un ping para confirmar una conexión exitosa
+try:
+    # Connect to MongoDB
+    client = MongoClient(uri, server_api=ServerApi('1'))
+    db = client.myDatabase
+    users_collection = db["users"]
+
+    # Ping to confirm connection
+    client.admin.command("ping")
+    print("Pinged your deployment. Successfully connected to MongoDB!")
+
+except ConnectionFailure as e:
+    print("Failed to connect to MongoDB:", e)
+    exit(1)
+
 
 #setting username
 def username_setup():
     usernameList = []  # Dummy list for testing
-    speak("Please speak into the microphone your desire username 3 times.")
+    speak("Please speak into the microphone your desire username 1 time.")
     speak("Now setting the username")
-    for i in range(3):
+    for i in range(1):
         speak("This is recording number " + str(i + 1))
         username_record = sd.rec(int(seconds * fs), samplerate=fs, channels=2)
         print("recording...")
@@ -37,9 +62,9 @@ def username_setup():
 #setting password    
 def pass_setup():
     passList = []  # Dummy list for testing
-    speak("Please speak into the microphone your desire passphrase 3 times.")
+    speak("Please speak into the microphone your desire passphrase 1 time.")
     speak("Now setting up password")
-    for i in range(3):
+    for i in range(1):
         speak("This is recording number " + str(i + 1))
         myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=2)
         print("recording...")
@@ -65,14 +90,28 @@ def compareElements(list):
     else:
         return False
 
-#database to store username and corresponding password
+output_file = os.path.join(path, "output.yaml")
 d = {}
 def database(username, pwd):
-    d[username] = hash_salt(pwd)
-    if not os.path.exists(path + 'output.yaml'):
-        with open(path + 'output.yaml', 'w') as file:
-            yaml.dump(d, file)
+    global d
+
+    # Check if user already exists
+    existing_user = users_collection.find_one({"username": username})
+    if existing_user:
+        print(f"User '{username}' already exists in the database.")
     else:
-        with open(path + 'output.yaml', 'a') as file:
-            yaml.dump(d, file)
+        hashed = hash_salt(pwd)
+        # Save to MongoDB
+        users_collection.insert_one({"username": username, "password": hashed.decode('utf-8')})
+        print(f"User '{username}' added to MongoDB.")
+
+        # Save to YAML file
+        d[username] = hashed
+        if not os.path.exists(output_file):
+            with open(output_file, 'w') as file:
+                yaml.dump(d, file)
+        else:
+            with open(output_file, 'a') as file:
+                yaml.dump(d, file)
     return d
+

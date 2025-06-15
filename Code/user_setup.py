@@ -11,8 +11,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 #load model
-dummy = ['alexa', 'alexa', 'alexa']  # Dummy list for testing
-passs = ['lol', 'lol', 'lol']  # Dummy list for testing
 path = os.getenv("ANSWERS_PATH")
 model = whisper.load_model("small")
 fs = 44100  # Sample rate
@@ -30,14 +28,14 @@ def user_setup():
     print(answer)
     if(answer == "yes" or answer == "Yes"):
         speak("Please set your username")
-        #usernameList = username_setup()
-        usernameList = ['alexa', 'alexa', 'alexa']  # Dummy list for testing
+        usernameList = username_setup()
+        #usernameList = ['john', 'john', 'john'] 
         print(usernameList)
         if(compareElements(usernameList) == True):
             speak("Your username has been set")
             speak("Please set up your password")
-            #passList = pass_setup()
-            passList = ['lol', 'lol', 'lol']
+            passList = pass_setup()
+            #passList = ['admin', 'admin', 'admin']
             print(passList)
             if(compareElements(passList) == True):
                 speak("Your password has been set")
