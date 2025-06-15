@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>plotting/plot_utils.R</file>
-    </qresource>
-</RCC>

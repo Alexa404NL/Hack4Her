@@ -1,50 +1,58 @@
 const elVideo = document.getElementById('video');
 
-const cargarCamera = async () => {
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
-    elVideo.srcObject = stream;
-  } catch (err) {
-    console.error("No se pudo acceder a la cámara:", err);
-  }
-};
+navigator.getMedia = (navigator.getUserMedia ||
+                    navigator.webkitGetUserMedia || navigator.mozGetUserMedia)
 
 Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-  faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-  faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
-  faceapi.nets.faceExpressionNet.loadFromUri('/models'),
-  faceapi.nets.ageGenderNet.loadFromUri('/models'),
+  faceapi.nets.ageGenderNet.loadFromUri('/face-api/models'),
+  faceapi.nets.faceExpressionNet.loadFromUri('/face-api/models'),
+  faceapi.nets.faceLandmark68Net.loadFromUri('/face-api/models'),
+  faceapi.nets.faceLandmark68TinyNet.loadFromUri('/face-api/models'),
+  faceapi.nets.faceRecognitionNet.loadFromUri('/face-api/models'),
+  faceapi.nets.ssdMobilenetv1.loadFromUri('/face-api/models'),
+   faceapi.nets.tinyFaceDetector.loadFromUri('/face-api/models')
+
+  
 ]).then(cargarCamera);
 
+const cargarCamera = async () => {
+  navigator.getMedia (
+    {
+      video: true,
+      audio: false
+    },
+    stream => elVideo.srcObject = stream,
+      console.error
+    
+  )
+};
+
+
 elVideo.addEventListener('play', async () => {
-  const canvas = faceapi.createCanvasFromMedia(elVideo);
-  document.body.append(canvas);
+  const canvas = faceapi.createCanvasFromMedia(elVideo)
+  document.body.append(canvas)
 
-  const displaySize = { width: elVideo.width, height: elVideo.height };
-  faceapi.matchDimensions(canvas, displaySize);
-
-  setInterval(async () => {
-    const detections = await faceapi.detectAllFaces(elVideo, new faceapi.TinyFaceDetectorOptions())
+  /* setInterval(async () => {
+    const detections = await faceapi.nets.detectAllFaces(elVideo, new faceapi.nets.TinyFaceDetectorOptions())
       .withFaceLandmarks()
       .withFaceExpressions()
       .withAgeAndGender();
 
-    const resized = faceapi.resizeResults(detections, displaySize);
+    const resized = faceapi.nets.resizeResults(detections, displaySize);
 
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
 
-    faceapi.draw.drawDetections(canvas, resized);
-    faceapi.draw.drawFaceLandmarks(canvas, resized);
-    faceapi.draw.drawFaceExpressions(canvas, resized);
+    faceapi.nets.draw.drawDetections(canvas, resized);
+    faceapi.nets.draw.drawFaceLandmarks(canvas, resized);
+    faceapi.nets.draw.drawFaceExpressions(canvas, resized);
 
     resized.forEach(det => {
       const { age, gender, detection } = det;
-      new faceapi.draw.DrawBox(detection.box, {
+      new faceapi.nets.draw.DrawBox(detection.box, {
         label: `${Math.round(age)} años, ${gender}`
       }).draw(canvas);
     });
-  }, 100);
+  }, 100); */
 });
 
 

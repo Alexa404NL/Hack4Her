@@ -28,7 +28,23 @@ def login():
 #         return {"status": "success", "message": "User created"}
 #     except Exception as e:
 #         return JSONResponse(status_code=500, content={"error": str(e)})
+""" @app.get("/signup")
+def signup_get():
+    return {"message": "Use POST to create a new user."} """
 
-
+@app.post("/signup")
+def signup():
+    print("Signup endpoint was hit")
+    try:
+        speak("Setting up new user.")
+        result = user_setup()
+        print("User setup result:", result)
+        if result:
+            return {"status": "success", "message": "User created"}
+        else:
+            return {"status": "fail", "message": "User setup canceled or failed"}
+    except Exception as e:
+        print("Signup error:", e)
+        return JSONResponse(status_code=500, content={"error": str(e)})
 
 

@@ -26,6 +26,7 @@ def user_setup():
     answer = result["text"].lower()
     answer =re.sub("[^A-Z]", "", answer,0,re.IGNORECASE)
     print(answer)
+    #answer = "yes"  # For testing purposes, replace with actual input
     if(answer == "yes" or answer == "Yes"):
         speak("Please set your username")
         usernameList = username_setup()
@@ -41,15 +42,15 @@ def user_setup():
                 speak("Your password has been set")
                 database(usernameList[0], passList[0])
                 speak("User setup is now completed")
+                return True
             else:
                 speak("System now exiting due to mismatching passphrases.")
-                sys.exit()
         else:
             speak("System now exiting due to mismatching usernames.") 
-            sys.exit()
+            
     elif(answer == "no" or answer == "No"):
         speak("Have a great day!")
-        sys.exit() 
+         
     else:
         speak("Invalid response.")
-        sys.exit()
+        
