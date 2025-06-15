@@ -37,9 +37,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
-
-
 // this is the demo flutter homescreen! keeping it if anyone wants reference -marian
 
 // class MyHomePage extends StatefulWidget {
