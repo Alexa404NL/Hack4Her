@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:h4h_app/pages/dashboard.dart';
+import 'package:h4h_app/pages/login.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -35,7 +37,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ],
                   onChanged: (value) {
                     if (value == "logout") {
-                      //explota
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => const LoginPage()),
+                      );
                       debugPrint("logout");
                     }
                   },

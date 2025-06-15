@@ -26,7 +26,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     try {
       final response = await http.post(
-        Uri.parse('http://10.0.2.2:3000/api/chat'), // Cambia por tu URL real
+        Uri.parse('http://10.22.237.139:3000/api/chat'), // Cambia por tu URL real
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'prompt': text}),
       );

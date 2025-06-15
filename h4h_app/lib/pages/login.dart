@@ -1,12 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:h4h_app/pages/dashboard.dart';
 import 'package:http/http.dart' as http;
 
 Future<void> login(context) async {
-  final response = await http.get(Uri.parse('http://10.0.2.2:8000/login'));
+  final response = await http.get(Uri.parse('http://10.22.237.139:8000/login'));
   debugPrint(response.body);
-
-  if (response.statusCode == 200) {
+  final data = jsonDecode(response.body);
+  
+  if (data['status'] == "success") {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => Dashboard()),
@@ -15,17 +18,17 @@ Future<void> login(context) async {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Hubo un error. Por favor intente de nuevo.')),
     );
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => LoginPage()),
-    );
+    // Navigator.pushReplacement(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => LoginPage()),
+    // );
   }
 }
 
 void signup(context) {
   ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('¡Próximamente!')),
-    );
+  );
 }
 
 // Future<void> signup() async {

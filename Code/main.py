@@ -15,7 +15,7 @@ def login():
             return {"status": "success", "message": "Verified"}
         else:
             speak("Verification failed.")
-            return {"status": "fail", "message": "Verification failed"}
+            return {"status": "failed", "message": "Verification failed"}
     except Exception as e:
         return JSONResponse(status_code=501, content={"error": str(e)})
 
