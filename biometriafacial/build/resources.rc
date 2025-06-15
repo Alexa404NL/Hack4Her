@@ -1,0 +1,24 @@
+#include <windows.h>
+
+IDI_ICON1 ICON "C:/Users/paola/Documents/hacks/Hack4Her/biometriafacial/openbr-master/share/openbr/openbr.ico"
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION 1,1,0,0
+
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN
+            VALUE "CompanyName",        "OpenBiometrics"
+            VALUE "ProductName",        "OpenBR"
+            VALUE "ProductVersion",     "1.1.0"
+            VALUE "LegalCopyright",     "Copyright OpenBiometrics 2013"
+        END
+    END
+
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
