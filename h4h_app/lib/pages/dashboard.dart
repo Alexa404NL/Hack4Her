@@ -90,10 +90,7 @@ class _DashboardState extends State<Dashboard> {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
-        child: Image.asset(
-          path,
-          fit: BoxFit.cover,
-        ),
+        child: Image.asset(path, fit: BoxFit.cover),
       ),
     );
   }
